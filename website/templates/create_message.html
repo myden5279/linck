@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} sign_up {% endblock %}
+{% block content %} 
+    <div class="form">
+        <form method="POST" enctype="multipart/form-data">
+            <h2 id='info' >Login</h2>
+            <br/>
+            <input
+                style="width: 50%;"
+                name="heading"
+                type="text"
+                id="heading"
+                placeholder="Heading"
+            />
+            <br/>
+            <br/>
+            <input
+                style="width: 50%;"
+                type="text"
+                name="body"
+                id="body"
+                placeholder="body"
+            />
+            <br/>
+            <br/>
+            <input
+                style="width: 50%; height: auto;"
+                type="file"
+                name="image"
+                id="image"
+            />
+            <button 
+                style="color:transparent;background-color: transparent;position:fixed;border-color: transparent;bottom: 0px;" 
+                type="submit" 
+                id='submit'
+            ></button>
+        </form>
+    </div>
+{% endblock %}
+{% block floating_action_button %}
+    <button class="floating_action_button" onclick="trigger()">
+        <span class="icon icon-checkmark"></span>
+    </button>
+    <script type="text/javascript">
+        var submit = document.getElementById('submit');
+        var image = document.getElementById('image');
+        function trigger(){
+            submit.click();
+        }
+    </script>
+{% endblock %}

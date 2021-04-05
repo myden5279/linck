@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %} home {% endblock %}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style_2_css.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style_1_css.css')}}">
+    </head>
+    <body>
+        <nav class='navbar'>
+            <div>
+                <a href="/" id="nav_main" class='right'><span class="lnr lnr-home"></span></a>
+                <a href="/new_user" class='right'><span class="icon icon-user-plus"></span></a>
+                <a href="/create_message" class='right'><span class="icon icon-pencil"></span></a>
+            </div>
+        </nav>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {%if messages%}
+                {%for category, message in messages%}
+                    {% if category == "error"%}
+                        <div class='alert alert-danger alert-dismissible fade show' role="alert">
+                            {{message}}
+                            <button class='close' data-dismiss="alert" onclick="remover()">
+                                <span class="icon icon-cancel-circle"></span>
+                            </button>
+                        </div>
+                    {% else %}
+                        <div class='alert alert-success alert-dismissible fade show' role="alert">
+                            {{message}}
+                            <button class='close' data-dismiss="alert" onclick="remover()">
+                                <span class="icon icon-cancel-circle"></span>
+                            </button>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {%endwith%}
+
+        <div class="content">
+            <br/>
+            <br/>
+            <br/>
+            <center>
+            {% block content %}
+            {% endblock %}
+            </center>
+        </div>
+        <div class='button_tab'>
+            {% block floating_action_button %} {% endblock %}
+        </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='base.js') }}"></script>
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='style_2_js.js') }}"></script> -->
+        <script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
+    </body>
+</html>

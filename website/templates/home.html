@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %} 
+    {% for i in range(0,100) %}
+        {{ i }}
+        <br/>
+    {% endfor %}
+{% endblock %}
+{% block floating_action_button %}
+    <button class="floating_action_button">
+        <span class="icon icon-pencil"> </span>
+    </button>
+{% endblock %}

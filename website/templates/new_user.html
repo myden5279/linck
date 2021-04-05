@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %} sign_up {% endblock %}
+{% block content %}
+    <div class="form">
+        <form method="POST">
+            <h2 id='info'>Sign Up</h2>
+            <br/>
+            <input
+                style="width: 50%;" 
+                name="id"
+                type="text"
+                id="id"
+                placeholder="A Unique ID"
+            />
+            <br/>
+            <br/>
+            <input
+                style="width: 50%;" 
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Your Name"
+            />
+            <br/>
+            <br/>
+            <input
+                style="width: 50%;"
+                type="password"
+                name="password1"
+                id="password1"
+                placeholder="Password"
+            />
+            <br/>
+            <br/>
+            <input
+                style="width: 50%;"
+                type="password"
+                name="password2" 
+                id="password2"
+                placeholder="Retype password"
+            />
+            <p>already a user?<a href="/sign_in"> sign in</a></p>
+            <button 
+                style="color:transparent;background-color: transparent;position:fixed;border-color: transparent;bottom: 0px;" 
+                type="submit" 
+                id='submit'
+            ></button>
+        </form>
+    </div>
+{% endblock %}
+{% block floating_action_button %}
+    <button type="submit" class="floating_action_button" onclick="trigger()">
+        <span class="icon icon-checkmark"></span>
+    </button>
+    <script type="text/javascript">
+        var submit = document.getElementById('submit');
+        function trigger(){
+            submit.click();
+        }
+    </script>
+{% endblock %}
